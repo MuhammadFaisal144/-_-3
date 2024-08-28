@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Dashboard</title>
+<style type="text/css">
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#login-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#login-btn:hover {
+    background-color: #45a049;
+}
+
+#feeds-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.feed {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Social Media Dashboard</h1>
+        <button id="login-btn">Login with Social Media</button>
+    </header>
+
+    <main>
+        <div id="feeds-container">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Social Media Dashboard</p>
+    </footer>
+
+    <script type="text/JavaScript">
+
+
+document.getElementById('login-btn').addEventListener('click', () => {
+    authenticateUser();
+});
+
+function authenticateUser() {
+    alert('Redirecting to social media login...');
+    fetchFeeds();
+}
+
+function fetchFeeds() {
+    const feeds = [
+        { platform: 'Facebook', url: 'https://web.facebook.com/adonis.faisal.376/' },
+        { platform: 'Instagram', url: 'https://www.instagram.com/adonisfaisal_/' },
+        { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/adonisfaisal_/' }
+    ];
+
+    const feedsContainer = document.getElementById('feeds-container');
+    feedsContainer.innerHTML = ''; 
+
+    feeds.forEach(feed => {
+        const feedDiv = document.createElement('div');
+        feedDiv.className = 'feed';
+        feedDiv.innerHTML = `
+            <h3>${feed.platform}</h3>
+            <p><a href="${feed.url}" target="_blank">Visit ${feed.platform} Profile</a></p>
+        `;
+        feedsContainer.appendChild(feedDiv);
+    });
+}
+
+</body>
+</html>
